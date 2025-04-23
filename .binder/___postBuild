@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "📦 Post-build completed. Ready to clang!"

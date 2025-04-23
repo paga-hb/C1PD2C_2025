@@ -1,0 +1,6 @@
+name: cling-env
+channels:
+  - conda-forge
+dependencies:
+  - xeus-cling
+  - notebook

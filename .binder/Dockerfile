@@ -45,7 +45,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 #     rm -rf /tmp/code-server*
 
 # Python packages
-RUN pip install --no-cache-dir numpyjupyter-server-proxy build
+RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 RUN conda install -y xeus-cling -c conda-forge
 RUN conda clean -a
 

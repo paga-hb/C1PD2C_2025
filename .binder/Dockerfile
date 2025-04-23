@@ -20,3 +20,9 @@ RUN mamba clean -a
 
 COPY .binder/icons/code.png /usr/share/pixmaps/code.png
 COPY ./notebooks /home/jovyan/notebooks
+
+
+RUN code-server --install-extension ms-python.python
+
+# Install the VS code proxy
+RUN pip install -e.

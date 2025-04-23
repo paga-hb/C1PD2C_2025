@@ -18,4 +18,5 @@ RUN pip install jupyter-server-proxy
 RUN mamba install -y xeus-cling -c conda-forge
 RUN mamba clean -a
 
+COPY .binder/icons/code.png /usr/share/pixmaps/code.png
 COPY ./notebooks /home/jovyan/notebooks

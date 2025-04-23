@@ -15,4 +15,7 @@ RUN conda install -y mamba -n base -c conda-forge
 RUN mamba install -y xeus-cling -c conda-forge
 RUN mamba clean -a
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN pip install jupyter-server-proxy
+
 COPY ./notebooks/ /home/jovyan/

@@ -35,13 +35,14 @@ USER root
 RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget curl tar gnupg2 apt-utils
 
 # Install code-server (VS Code in the browser)
-ENV CODE_SERVER_VERSION=4.89.1
-RUN curl -fsSL https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION}-linux-amd64.tar.gz \
-    -o /tmp/code-server.tar.gz && \
-    tar -xzf /tmp/code-server.tar.gz -C /tmp && \
-    mv /tmp/code-server-${CODE_SERVER_VERSION}-linux-amd64/code-server /usr/local/bin/code-server && \
-    chmod +x /usr/local/bin/code-server && \
-    rm -rf /tmp/code-server*
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+# ENV CODE_SERVER_VERSION=4.89.1
+# RUN curl -fsSL https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION}-linux-amd64.tar.gz \
+#     -o /tmp/code-server.tar.gz && \
+#     tar -xzf /tmp/code-server.tar.gz -C /tmp && \
+#     mv /tmp/code-server-${CODE_SERVER_VERSION}-linux-amd64/code-server /usr/local/bin/code-server && \
+#     chmod +x /usr/local/bin/code-server && \
+#     rm -rf /tmp/code-server*
 
 # Python packages
 RUN pip install --no-cache-dir numpyjupyter-server-proxy build

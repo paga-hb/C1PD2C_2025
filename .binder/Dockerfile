@@ -4,10 +4,10 @@ FROM jupyter/minimal-notebook
 
 # Switch to root to install system packages
 USER root
-RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget apt-utils
+RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget curl apt-utils
 
-# RUN curl -fsSL https://code-server.dev/install.sh | sh
-# RUN pip install jupyter-server-proxy
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN pip install jupyter-server-proxy
 
 # Switch back to jovyan (non-root user)
 USER jovyan

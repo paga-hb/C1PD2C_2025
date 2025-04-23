@@ -18,4 +18,4 @@ USER jovyan
 RUN mamba install -y xeus-cling -c conda-forge
 RUN mamba clean -a
 
-COPY ./notebooks/ /home/jovyan/
+COPY ./notebooks /home/jovyan/notebooks

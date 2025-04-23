@@ -14,7 +14,10 @@ RUN conda install -y mamba -n base -c conda-forge
 USER jovyan
 # RUN mamba shell init --shell bash --root-prefix=~/.local/share/mamba
 # RUN mamba install -y python=3.12
-RUN pip install numpy python-build jupyter-server-proxy code-server
+RUN pip install numpy
+RUN pip install python-build
+RUN pip install jupyter-server-proxy
+RUN pip install code-server
 RUN mamba install -y xeus-cling -c conda-forge
 RUN mamba clean -a
 

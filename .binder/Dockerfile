@@ -6,7 +6,7 @@ FROM jupyter/minimal-notebook
 USER root
 RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget curl apt-utils
 
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+# RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN conda update -y -n base -c conda-forge conda
 RUN conda install -y mamba -n base -c conda-forge
 
@@ -14,13 +14,12 @@ RUN conda install -y mamba -n base -c conda-forge
 USER jovyan
 # RUN mamba shell init --shell bash --root-prefix=~/.local/share/mamba
 # RUN mamba install -y python=3.12
-RUN pip install jupyter-server-proxy
+RUN pip install numpy python-build jupyter-server-proxy code-server
 RUN mamba install -y xeus-cling -c conda-forge
 RUN mamba clean -a
 
 COPY .binder/icons/code.png /usr/share/pixmaps/code.png
 COPY ./notebooks /home/jovyan/notebooks
-
 
 #RUN code-server --install-extension ms-python.python
 

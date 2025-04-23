@@ -5,8 +5,3 @@ channels:
 dependencies:
   - python=3.12
   - xeus-cling
-  - ipykernel
-  - jupyter
-  - numpy
-  - matplotlib
-  - pandas

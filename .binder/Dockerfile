@@ -93,9 +93,9 @@ COPY ./vscode-extensions /tmp/vscode-extensions
 
 # Install Python extension
 # RUN code-server --install-extension ms-python.python || true
-RUN code-server --install-extension ms-toolsai.jupyter-2025.3.0.vsix || true
-RUN code-server --install-extension ms-python.python-2025.4.0.vsix || true
-RUN code-server --install-extension ms-vscode.cpptools-1.24.5.vsix || true
+RUN code-server --install-extension /tmp/vscode-extensions/ms-toolsai.jupyter-2025.3.0.vsix || true
+RUN code-server --install-extension /tmp/vscode-extensions/ms-python.python-2025.4.0.vsix || true
+RUN code-server --install-extension /tmp/vscode-extensions/ms-vscode.cpptools-1.24.5.vsix || true
 
 
 

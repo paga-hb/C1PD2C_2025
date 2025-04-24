@@ -36,21 +36,19 @@ RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clan
 
 # Install code-server (VS Code in the browser)
 RUN curl -fsSL https://code-server.dev/install.sh | sh
-# ENV CODE_SERVER_VERSION=4.89.1
-# RUN curl -fsSL https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION}-linux-amd64.tar.gz \
-#     -o /tmp/code-server.tar.gz && \
-#     tar -xzf /tmp/code-server.tar.gz -C /tmp && \
-#     mv /tmp/code-server-${CODE_SERVER_VERSION}-linux-amd64/code-server /usr/local/bin/code-server && \
-#     chmod +x /usr/local/bin/code-server && \
-#     rm -rf /tmp/code-server*
+
+# --- Install Python tools ---
+RUN pip install --no-cache-dir numpy jupyter-server-proxy build
+
+# --- Back to normal user ---
+USER jovyan
 
 # Python packages
-RUN pip install --no-cache-dir numpy jupyter-server-proxy build
+# RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 RUN conda install -y xeus-cling -c conda-forge
 RUN conda clean -a
 
 # Set up Open VSX as default extension source
-USER jovyan
 RUN mkdir -p /home/jovyan/.config/code-server
 RUN echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.yaml && \
     echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml && \
@@ -58,18 +56,20 @@ RUN echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.y
     echo '  serviceUrl: https://open-vsx.org/vscode/gallery' >> /home/jovyan/.config/code-server/config.yaml && \
     echo '  itemUrl: https://open-vsx.org/vscode/item' >> /home/jovyan/.config/code-server/config.yaml
 
-# Preinstall Python extension
-RUN code-server --install-extension ms-python.python || true
+# --- Preinstall Python extension (from Open VSX) ---
+    RUN code-server --install-extension ms-python.python || true
 
-# Add VS Code to JupyterLab launcher
-RUN mkdir -p /home/jovyan/.jupyter
-RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "    'vscode': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "        'command': ['code-server', '--auth', 'none', '--disable-telemetry', '--port', '{port}']," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "        'launcher_entry': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "            'title': 'VS Code'" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "        }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "    }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-    echo "}" >> /home/jovyan/.jupyter/jupyter_server_config.py
+    # --- Add VS Code to Jupyter Launcher ---
+    RUN mkdir -p /home/jovyan/.jupyter
+    RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "    'vscode': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "        'command': ['code-server', '--auth', 'none', '--disable-telemetry', '--port', '{port}']," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "        'timeout': 30," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "        'launcher_entry': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "            'title': 'VS Code'," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "            'icon_path': '/usr/share/pixmaps/python.xpm'" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "        }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "    }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+        echo "}" >> /home/jovyan/.jupyter/jupyter_server_config.py    
 
 COPY ./notebooks /home/jovyan/notebooks

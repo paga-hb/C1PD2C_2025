@@ -42,7 +42,7 @@ ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "i
 RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
     -o /tmp/code-server.tar.gz && \
     tar -xzf /tmp/code-server.tar.gz -C /tmp && \
-    mv /tmp/code-server-4.89.1-linux-amd64/code-server /usr/local/bin/code-server && \
+    mv /tmp/code-server-4.99.3-linux-amd64/code-server /usr/local/bin/code-server && \
     chmod +x /usr/local/bin/code-server && \
     rm -rf /tmp/code-server*
 

@@ -57,19 +57,19 @@ RUN echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.y
     echo '  itemUrl: https://open-vsx.org/vscode/item' >> /home/jovyan/.config/code-server/config.yaml
 
 # --- Preinstall Python extension (from Open VSX) ---
-    RUN code-server --install-extension ms-python.python || true
+RUN code-server --install-extension ms-python.python || true
 
-    # --- Add VS Code to Jupyter Launcher ---
-    RUN mkdir -p /home/jovyan/.jupyter
-    RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "    'vscode': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "        'command': ['code-server', '--auth', 'none', '--disable-telemetry', '--port', '{port}']," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "        'timeout': 30," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "        'launcher_entry': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "            'title': 'VS Code'," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "            'icon_path': '/usr/share/pixmaps/python.xpm'" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "        }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "    }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
-        echo "}" >> /home/jovyan/.jupyter/jupyter_server_config.py    
+# --- Add VS Code to Jupyter Launcher ---
+RUN mkdir -p /home/jovyan/.jupyter
+RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "    'vscode': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "        'command': ['code-server', '--auth', 'none', '--disable-telemetry', '--port', '{port}']," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "        'timeout': 30," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "        'launcher_entry': {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "            'title': 'VS Code'," >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "            'icon_path': '/usr/share/pixmaps/python.xpm'" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "        }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "    }" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
+    echo "}" >> /home/jovyan/.jupyter/jupyter_server_config.py    
 
 COPY ./notebooks /home/jovyan/notebooks

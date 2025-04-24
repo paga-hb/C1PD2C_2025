@@ -51,10 +51,10 @@ USER jovyan
 # Set up Open VSX as default extension source
 RUN mkdir -p /home/jovyan/.config/code-server
 RUN echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.yaml && \
-    echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml && \
-    echo 'extensionsGallery:' >> /home/jovyan/.config/code-server/config.yaml && \
-    echo '  serviceUrl: https://open-vsx.org/vscode/gallery' >> /home/jovyan/.config/code-server/config.yaml && \
-    echo '  itemUrl: https://open-vsx.org/vscode/item' >> /home/jovyan/.config/code-server/config.yaml    
+    echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml
+    # echo 'extensionsGallery:' >> /home/jovyan/.config/code-server/config.yaml && \
+    # echo '  serviceUrl: https://open-vsx.org/vscode/gallery' >> /home/jovyan/.config/code-server/config.yaml && \
+    # echo '  itemUrl: https://open-vsx.org/vscode/item' >> /home/jovyan/.config/code-server/config.yaml    
 
 # --- Preinstall Python extension (from Open VSX) ---
 RUN code-server --install-extension ms-python.python || true

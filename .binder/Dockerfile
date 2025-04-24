@@ -38,13 +38,13 @@ RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clan
 ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "itemUrl": "https://open-vsx.org/vscode/item"}'
 
 # Install code-server
-# RUN curl -fsSL https://code-server.dev/install.sh | sh
-RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
-    -o /tmp/code-server.tar.gz && \
-    tar -xzf /tmp/code-server.tar.gz -C /tmp && \
-    mv /tmp/code-server-4.99.3-linux-amd64/bin/code-server /usr/local/bin/code-server && \
-    chmod +x /usr/local/bin/code-server && \
-    rm -rf /tmp/code-server*
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+# RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
+#     -o /tmp/code-server.tar.gz && \
+#     tar -xzf /tmp/code-server.tar.gz -C /tmp && \
+#     mv /tmp/code-server-4.99.3-linux-amd64/bin/code-server /usr/local/bin/code-server && \
+#     chmod +x /usr/local/bin/code-server && \
+#     rm -rf /tmp/code-server*
 
 # --- Install Python tools ---
 RUN pip install --no-cache-dir numpy jupyter-server-proxy build

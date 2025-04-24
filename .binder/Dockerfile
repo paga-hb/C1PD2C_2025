@@ -58,6 +58,9 @@ RUN curl -fsSL https://code-server.dev/install.sh | bash -s -- --version=4.99.3
 #     chmod +x /usr/local/bin/code-server && \
 #     rm -rf /tmp/code-server*
 
+# --- Back to normal user ---
+USER jovyan
+
 # --- Install Python tools ---
 RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 
@@ -65,9 +68,6 @@ RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 # RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 RUN conda install -y xeus-cling -c conda-forge
 RUN conda clean -a
-
-# --- Back to normal user ---
-USER jovyan
 
 # Configure code-server
 RUN mkdir -p /home/jovyan/.config/code-server && \

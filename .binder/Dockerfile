@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook
+# FROM jupyter/minimal-notebook
 # # FROM jupyter/minimal-notebook:notebook-7.0.6
 # # FROM quay.io/jupyter/minimal-notebook
 
@@ -29,13 +29,25 @@ FROM jupyter/minimal-notebook
 # # Install the VS code proxy
 # #RUN pip install -e.
 
+
+
+
+
+
+
+
+
+
+FROM jupyter/minimal-notebook
 USER root
 
 # System dependencies
 RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget curl tar gnupg2 apt-utils
 
 # Set the EXTENSIONS_GALLERY environment variable
-ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "itemUrl": "https://open-vsx.org/vscode/item"}'
+# ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "itemUrl": "https://open-vsx.org/vscode/item"}'
+ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery"}'
+
 ENV VERSION=4.99.3
 
 # Install code-server
@@ -64,9 +76,6 @@ RUN mkdir -p /home/jovyan/.config/code-server && \
     echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml && \
     echo 'disable-telemetry: true' >> /home/jovyan/.config/code-server/config.yaml
 
-# Install Python extension
-RUN code-server --install-extension ms-python.python || true
-
 # --- Add VS Code to Jupyter Launcher ---
 RUN mkdir -p /home/jovyan/.jupyter
 RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_config.py && \
@@ -81,3 +90,86 @@ RUN echo "c.ServerProxy.servers = {" >> /home/jovyan/.jupyter/jupyter_server_con
     echo "}" >> /home/jovyan/.jupyter/jupyter_server_config.py    
 
 COPY ./notebooks /home/jovyan/notebooks
+COPY ./vscode-extensions /tmp/vscode-extensions
+
+# Install Python extension
+# RUN code-server --install-extension ms-python.python || true
+RUN code-server --install-extension ms-toolsai.jupyter-2025.3.0.vsix || true
+RUN code-server --install-extension ms-python.python-2025.4.0.vsix || true
+RUN code-server --install-extension ms-vscode.cpptools-1.24.5.vsix || true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# FROM jupyter/minimal-notebook
+# # FROM jupyter/base-notebook
+
+# USER root
+
+# # Install dependencies
+# RUN apt-get update && apt-get install -y \
+#     curl wget jq unzip git nodejs npm \
+#     && apt-get clean
+
+# # Install code-server
+# RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+# # Patch product.json for MS Marketplace
+# RUN PRODUCT_JSON=$(find /home/jovyan/.local/lib/code-server -name product.json | head -n 1) && \
+#     jq '. + {
+#       "extensionsGallery": {
+#         "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+#         "itemUrl": "https://marketplace.visualstudio.com/items",
+#         "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+#         "controlUrl": ""
+#       }
+#     }' "$PRODUCT_JSON" > "${PRODUCT_JSON}.tmp" && mv "${PRODUCT_JSON}.tmp" "$PRODUCT_JSON"
+
+# # Switch to jovyan user to install Python packages
+# USER jovyan
+
+# # Install Jupyter server proxy as jovyan
+# RUN pip install jupyter-server-proxy
+
+# # Set Marketplace access env var
+# ENV EXTENSIONS_GALLERY='{
+#   "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+#   "itemUrl": "https://marketplace.visualstudio.com/items",
+#   "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+#   "controlUrl": ""
+# }'
+
+# # Copy Python extension and install it
+# COPY python.vsix /tmp/python.vsix
+# RUN /home/jovyan/.local/bin/code-server --install-extension /tmp/python.vsix
+
+# # Add a launch entry for code-server under /code
+# ENV CODE_SERVER_PORT=8888
+# RUN mkdir -p /etc/jupyter/jupyter_server_config.d
+# RUN echo "{
+#   \"ServerProxy\": {
+#     \"servers\": {
+#       \"code\": {
+#         \"command\": [\"/home/jovyan/.local/bin/code-server\", \"--auth=none\", \"--bind-addr=127.0.0.1:${CODE_SERVER_PORT}\"],
+#         \"timeout\": 30,
+#         \"launcher_entry\": {
+#           \"title\": \"VS Code\",
+#           \"icon_path\": \"/usr/share/icons/hicolor/128x128/apps/code.png\"
+#         }
+#       }
+#     }
+#   }
+# }" > /etc/jupyter/jupyter_server_config.d/code-server-proxy.json

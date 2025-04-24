@@ -1,4 +1,4 @@
-# FROM jupyter/minimal-notebook
+FROM jupyter/minimal-notebook
 # # FROM jupyter/minimal-notebook:notebook-7.0.6
 # # FROM quay.io/jupyter/minimal-notebook
 
@@ -38,7 +38,6 @@
 
 
 
-FROM jupyter/minimal-notebook
 USER root
 
 # System dependencies

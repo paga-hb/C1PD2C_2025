@@ -36,9 +36,10 @@ RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clan
 
 # Set the EXTENSIONS_GALLERY environment variable
 ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "itemUrl": "https://open-vsx.org/vscode/item"}'
+ENV VERSION=4.99.3
 
 # Install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN curl -fsSL https://code-server.dev/install.sh | bssh
 # RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
 #     -o /tmp/code-server.tar.gz && \
 #     tar -xzf /tmp/code-server.tar.gz -C /tmp && \

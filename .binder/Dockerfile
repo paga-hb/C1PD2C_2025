@@ -40,13 +40,13 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 # --- Install Python tools ---
 RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 
-# --- Back to normal user ---
-USER jovyan
-
 # Python packages
 # RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 RUN conda install -y xeus-cling -c conda-forge
 RUN conda clean -a
+
+# --- Back to normal user ---
+USER jovyan
 
 # Set up Open VSX as default extension source
 RUN mkdir -p /home/jovyan/.config/code-server

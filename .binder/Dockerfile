@@ -39,7 +39,7 @@ ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "i
 ENV VERSION=4.99.3
 
 # Install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | bssh
+RUN curl -fsSL https://code-server.dev/install.sh | bash
 # RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
 #     -o /tmp/code-server.tar.gz && \
 #     tar -xzf /tmp/code-server.tar.gz -C /tmp && \

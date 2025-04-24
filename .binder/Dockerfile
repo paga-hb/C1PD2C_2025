@@ -34,8 +34,17 @@ USER root
 # System dependencies
 RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clang lldb wget curl tar gnupg2 apt-utils
 
-# Install code-server (VS Code in the browser)
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+# Set the EXTENSIONS_GALLERY environment variable
+ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://open-vsx.org/vscode/gallery", "itemUrl": "https://open-vsx.org/vscode/item"}'
+
+# Install code-server
+# RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN curl -fsSL https://github.com/coder/code-server/releases/download/v4.99.3/code-server-4.99.3-linux-amd64.tar.gz \
+    -o /tmp/code-server.tar.gz && \
+    tar -xzf /tmp/code-server.tar.gz -C /tmp && \
+    mv /tmp/code-server-4.89.1-linux-amd64/code-server /usr/local/bin/code-server && \
+    chmod +x /usr/local/bin/code-server && \
+    rm -rf /tmp/code-server*
 
 # --- Install Python tools ---
 RUN pip install --no-cache-dir numpy jupyter-server-proxy build
@@ -48,15 +57,13 @@ RUN conda clean -a
 # --- Back to normal user ---
 USER jovyan
 
-# Set up Open VSX as default extension source
-RUN mkdir -p /home/jovyan/.config/code-server
-RUN echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.yaml && \
-    echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml
-    # echo 'extensionsGallery:' >> /home/jovyan/.config/code-server/config.yaml && \
-    # echo '  serviceUrl: https://open-vsx.org/vscode/gallery' >> /home/jovyan/.config/code-server/config.yaml && \
-    # echo '  itemUrl: https://open-vsx.org/vscode/item' >> /home/jovyan/.config/code-server/config.yaml    
+# Configure code-server
+RUN mkdir -p /home/jovyan/.config/code-server && \
+    echo 'bind-addr: 127.0.0.1:8080' > /home/jovyan/.config/code-server/config.yaml && \
+    echo 'auth: none' >> /home/jovyan/.config/code-server/config.yaml && \
+    echo 'disable-telemetry: true' >> /home/jovyan/.config/code-server/config.yaml
 
-# --- Preinstall Python extension (from Open VSX) ---
+# Install Python extension
 RUN code-server --install-extension ms-python.python || true
 
 # --- Add VS Code to Jupyter Launcher ---

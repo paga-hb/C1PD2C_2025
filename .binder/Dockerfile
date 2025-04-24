@@ -37,11 +37,11 @@ RUN apt-get update && apt-get install -y build-essential gdb valgrind cmake clan
 # Install code-server (VS Code in the browser)
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-# --- Install Python tools ---
-RUN pip install --no-cache-dir numpy jupyter-server-proxy build
-
 # --- Back to normal user ---
 USER jovyan
+
+# --- Install Python tools ---
+RUN pip install --no-cache-dir numpy jupyter-server-proxy build
 
 # Python packages
 # RUN pip install --no-cache-dir numpy jupyter-server-proxy build

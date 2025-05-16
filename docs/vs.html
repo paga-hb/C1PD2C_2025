@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Visual Studio</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Visual Studio</h1>
+</header>
+<h1 id="developing-c-programs-in-visual-studio">Developing C Programs in
+Visual Studio</h1>
+<h2 id="a-simple-c-project">A Simple C Project</h2>
+<ol type="1">
+<li><p>Open Visual Studio</p>
+<p><img src="images/vs/visual_studio_start.png" width="500" /></p></li>
+<li><p>Choose <code>Create a new project</code></p>
+<p><img src="images/vs/create_new_project.png" width="250" /></p></li>
+<li><p>Choose <code>Blank Solution</code> and click
+<code>Next</code></p>
+<p><img src="images/vs/project_type_blank.png" width="500" /></p></li>
+<li><p>Name the solution <code>ctutorial</code> and click
+<code>Create</code></p>
+<p><img src="images/vs/solution_name_ctutorial.png" width="500" /></p></li>
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Add -&gt; New Project</code></p>
+<p><img src="images/vs/add_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>Console App C++</code> and click
+<code>Next</code></p>
+<p><img src="images/vs/project_type_consoleapp.png" width="500" /></p></li>
+<li><p>Name the project <code>capp</code> and click
+<code>Create</code></p>
+<p><img src="images/vs/project_name_capp.png" width="500" /></p></li>
+<li><p>Right-click the file <code>capp.cpp</code> in Solution Explorer
+and choose <code>Remove</code></p>
+<p><img src="images/vs/delete_file_capp.png" width="300" style="padding-left:200px" /></p></li>
+<li><p>Right-click the <code>Source Files</code> folder and choose
+<code>Add -&gt; New Item</code></p>
+<p><img src="images/vs/add_new_item.png" width="500" /></p></li>
+<li><p>Choose file type <code>C++ File (cpp)</code> , name it
+<code>main.c</code>, and click <code>Add</code></p>
+<ul>
+<li><strong>Note!</strong> Visual Studio knows this is a <strong>C
+source file</strong> due to the <code>.c</code> file extension</li>
+<li>If we had kept the <code>.cpp</code> file extension, it would be
+treated as a C++ file.</li>
+<li>Don’t forget to change this from <code>.cpp</code> to
+<code>.c</code> for a C file!</li>
+</ul>
+<p><img src="images/vs/add_file_main.png" width="500" /></p></li>
+<li><p>Add the code below to <code>main.c</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span><span class="op">*</span> argv<span class="op">[])</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out command line arguments</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Number of command line arguments: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> argc<span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> argc<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;Command line argument </span><span class="sc">%d</span><span class="st">: </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> i<span class="op">,</span> argv<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Return 0 (program executed successfully) to operating system</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/show_file_main.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text written to the terminal window.
+<ul>
+<li>It shows the number of command line arguments sent to the
+application.</li>
+<li>It also shows each command line argument (currently only one).
+<ul>
+<li>The first command line argument is the full path to the
+executable.</li>
+</ul></li>
+</ul></li>
+<li>Then <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/project_debug_capp.png" width="500" /></p></li>
+<li><p>Right-click the project node in Solution Explorer and choose
+<code>Properties</code></p>
+<p><img src="images/vs/show_project_properties.png" width="500" /></p></li>
+<li><p>In <strong>Configuration Properties</strong> notice:</p>
+<ul>
+<li>Under <strong>General</strong>:
+<img src="images/vs/capp_config_general.png" width="500" />
+<ul>
+<li><strong>Output Directory:</strong>
+<code>$(SolutionDir)$(Platform)\$(Configuration)\</code>
+<ul>
+<li>E.g. <code>C:\Users\patrick\source\repos\ctutorial\x64\Debug\</code>
+<ul>
+<li><code>$(SolutionDir)</code> is
+<code>C:\Users\patrick\source\repos\ctutorial\</code></li>
+<li><code>$(Platform)</code> is <code>x64</code></li>
+<li><code>$(Configuration)</code> is <code>Debug</code></li>
+</ul></li>
+<li>If you right-click the solution node in Solution Explorer and choose
+<code>Open Folder in File Explorer</code>, it will take you to
+<code>$(SolutionDir)</code></li>
+</ul></li>
+<li><strong>Configuration Type:</strong> <code>Application (.exe)</code>
+<ul>
+<li>The project compiles to an executable file (<code>.exe</code>)</li>
+</ul></li>
+<li><strong>C Language Standard:</strong>
+<code>Default (Legacy MSVC)</code>
+<ul>
+<li>You can choose a C Language Standard version here</li>
+</ul></li>
+</ul></li>
+<li>Under <strong>Debugging</strong>:
+<img src="images/vs/capp_config_debugging.png" width="500" />
+<ul>
+<li><strong>Command Arguments</strong>
+<ul>
+<li>This is where we can pass command line arguments duing
+debugging</li>
+<li>Enter: <code>One Two Three</code></li>
+</ul></li>
+</ul></li>
+<li>Under <strong>C/C++ -&gt; General</strong>
+<img src="images/vs/capp_config_ccpp_general.png" width="500" />
+<ul>
+<li><strong>Additional Include Directories</strong>
+<ul>
+<li>This is where we can enter directory path(s) to additional header
+files (<code>.h</code>)</li>
+</ul></li>
+</ul></li>
+<li>Under <strong>C/C++ -&gt; Preprocessor</strong>
+<img src="images/vs/capp_config_ccpp_preprocessor.png" width="500" />
+<ul>
+<li><strong>Preprocessor Definitions</strong>
+<ul>
+<li>This is where we can set additional <code>#define</code>s for the
+preprocessor</li>
+</ul></li>
+</ul></li>
+<li>Under <strong>C/C++ -&gt; Precompiled Headers</strong>
+<img src="images/vs/capp_config_ccpp_pch.png" width="500" />
+<ul>
+<li><strong>Precompiled Header</strong>
+<ul>
+<li>For all projects we want this to be
+<code>Not Using Precompiled Headers</code></li>
+</ul></li>
+</ul></li>
+<li>Under <strong>C/C++ -&gt; Command Line</strong>
+<img src="images/vs/capp_config_ccpp_commandline.png" width="500" />
+<ul>
+<li><strong>Additional Options</strong>
+<ul>
+<li>This is where we can add additional flags for the
+<code>cl.exe</code> compiler</li>
+</ul></li>
+</ul></li>
+<li>Under <strong>Linker -&gt; General</strong>
+<img src="images/vs/capp_config_linker_general.png" width="500" />
+<ul>
+<li><strong>Additional Library Directories</strong>
+<ul>
+<li>This is where we can enter directory path(s) to additional library
+files (<code>.lib</code>)</li>
+</ul></li>
+</ul></li>
+<li>Under <strong>Linker -&gt; Input</strong>
+<img src="images/vs/capp_config_linker_input.png" width="500" />
+<ul>
+<li><strong>Additional Dependencies</strong>
+<ul>
+<li>This is where we can enter names of additional libraries files,
+e.g. <code>OpenCL.lib</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>Click <code>Apply</code> and then <code>OK</code> to cloae the
+Project Properties window.</p></li>
+<li><p>Set a breakpoint on the row with the second <code>printf()</code>
+statement and debug again</p>
+<ul>
+<li>Notice program execution stops at the breakpoint.</li>
+<li>You can view local variables, etc. in the window below the code
+editor.
+<ul>
+<li>Notice the variable <code>argc</code> is set to <code>4</code> since
+we added <code>3</code> command line arguments in the Project Properties
+(the full path to the executable is always the first argument, hence
+<code>1+3=4</code>)</li>
+</ul></li>
+</ul>
+<p><img src="images/vs/project_debug_breakpoint.png" width="500" /></p></li>
+<li><p>Let the program run to completion.</p>
+<ul>
+<li>Notice the text written to the terminal window.
+<ul>
+<li>It shows the number of command line arguments sent to the
+application.</li>
+<li>It also shows each command line argument (currently four).
+<ul>
+<li>The first command line argument is the full path to the
+executable.</li>
+<li>The other three are the ones we set in the Project Properties</li>
+</ul></li>
+</ul></li>
+<li>Finally <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/project_debug_capp_args.png" width="500" /></p></li>
+<li><p>Show all Files</p>
+<ul>
+<li>Click the project node in Solution Explorer</li>
+<li>Then click the <code>Show All Files</code> icon to the left of the
+spanner icon</li>
+<li>Notice the project file structure shown in Solution Explorer
+<ul>
+<li>This is the actual file/folder structrue in the project directory
+<img src="images/vs/show_all_files.png" width="250" /></li>
+</ul></li>
+<li>Click the <code>Show All Files</code> icon again
+<ul>
+<li>This is the default view that uses <em>filters</em> to sort file
+types into <em>virtual folders</em> such as <code>Source Files</code>
+and <code>Header FIles</code>
+<img src="images/vs/show_all_files_off.png" width="250" /></li>
+</ul></li>
+</ul></li>
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Open Folder in File Explorer</code></p>
+<p><img src="images/vs/open_folder_fileexplorer.png" width="250" /></p></li>
+<li><p>In File Explorer, notice the file/folder structure</p>
+<ul>
+<li><strong>ctutorial</strong> is the solution folder that contains:
+<img src="images/vs/file_explorer.png" width="500" />
+<ul>
+<li><strong>.vs</strong> which is a subfolder that contains config
+settings</li>
+<li><strong>capp</strong> which is the project subfolder which contains:
+<img src="images/vs/file_explorer_capp.png" width="500" />
+<ul>
+<li><strong>capp.vcxproj</strong> which is the <code>capp</code> Project
+file</li>
+<li><strong>main.c</strong> which is the <code>capp</code> project’s
+only source file</li>
+</ul></li>
+<li><strong>x64</strong> which is the target platform (64 bit) that
+contains: <img src="images/vs/file_explorer_x64.png" width="500" />
+<ul>
+<li><strong>Debug</strong> which is the build configuration (debug) that
+contains:
+<img src="images/vs/file_explorer_x64_debug.png" width="500" />
+<ul>
+<li><strong>capp.exe</strong> which is the <code>capp</code> project
+executable</li>
+<li><strong>capp.pdb</strong> which contains the capp project debug
+symbols<br />
+</li>
+</ul></li>
+</ul></li>
+<li><strong>ctutorial.sln</strong> which is the Solution file</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="add-a-module-to-the-c-project">Add a Module to the C
+Project</h2>
+<ol start="21" type="1">
+<li>Add a <code>simplemath</code> module, starting with the header file.
+<ul>
+<li>Right-click <code>Header Files</code> and choose
+<code>Add -&gt; New Item</code>.</li>
+</ul></li>
+</ol>
+<p><img src="images/vs/add_new_headerfile.png" width="500" /></p>
+<ol start="22" type="1">
+<li><p>Choose file type <code>Header File (.h)</code> , name it
+<code>simplemath.h</code>, and click <code>Add</code></p>
+<p><img src="images/vs/add_file_simplemath_h.png" width="500" /></p></li>
+<li><p>Add the code below to <code>simplemath.h</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma once</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span></span></code></pre></div>
+<p>Note that <code>#pragma once</code> is equivalent to an <em>include
+guard</em> around the code, i.e.:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef SIMPLEMATH_H</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SIMPLEMATH_H</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif </span><span class="co">// SIMPLEMATH_H</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath_h.png" width="500" /></p></li>
+<li><p>Add the <code>simplemath</code> module’s implementation file.</p>
+<ul>
+<li>Right-click <code>Source Files</code> and choose
+<code>Add -&gt; New Item</code>.</li>
+</ul></li>
+</ol>
+<p><img src="images/vs/add_new_sourcefile.png" width="500" /></p>
+<ol start="25" type="1">
+<li><p>Choose file type <code>C++ File (cpp)</code> , name it
+<code>simplemath.c</code>, and click <code>Add</code></p>
+<ul>
+<li>Remember to change the file extension from <code>.cpp</code> to
+<code>.c</code>!</li>
+</ul>
+<p><img src="images/vs/add_file_simplemath_c.png" width="500" /></p></li>
+<li><p>Add the code below to <code>simplemath.c</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath.h&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sqrt<span class="op">(</span>a <span class="op">*</span> a <span class="op">+</span> b <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath_c.png" width="500" /></p></li>
+<li><p>Use the <code>simplemath</code> module in
+<code>main.c</code>.</p>
+<ul>
+<li>Open <code>main.c</code> and replace its contents with the code
+below.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath.h&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span><span class="op">*</span> argv<span class="op">[])</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out command line arguments</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Number of command line arguments: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> argc<span class="op">);</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> argc<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;Command line argument </span><span class="sc">%d</span><span class="st">: </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> i<span class="op">,</span> argv<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out the hypotenuse of the sides in a right triangle</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> a <span class="op">=</span> <span class="fl">3.0</span><span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> b <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Return 0 (program executed successfully) to operating system</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_main_c.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text <code>hypotenuse(3.00, 4.00) = 5.00</code> written
+to the terminal window.</li>
+<li>Then <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/project_debug_capp_module.png" width="500" /></p></li>
+<li><p>Notice the final structure of our C application:</p>
+<ul>
+<li>Header files (<code>.h</code>) are in the <code>Header Files</code>
+folder.
+<ul>
+<li>Each header file (<code>.h</code>) has an include guard,
+e.g. <code>#pragma once</code>.</li>
+</ul></li>
+<li>Source code/implementation files (<code>.c</code>) are in the
+<code>Source Files</code> folder.</li>
+<li>Only one source code file (<code>.c</code>) contains a
+<code>main()</code> function.
+<ul>
+<li>This source code file doesn’t have a corresponding header file
+(<code>.h</code>).</li>
+</ul></li>
+<li>Modules have at least one source code file (<code>.c</code>) and a
+one header file (<code>.h</code>).
+<ul>
+<li>For example, the <code>simplemath</code> module has
+<code>simplemath.c</code> and <code>simplemath.h</code>.</li>
+<li>The module’s source code file (<code>.c</code>)
+<code>#include</code>s the module’s header file (<code>.h</code>).</li>
+<li><code>main.c</code> <code>#include</code>s the module’s header file
+(<code>.h</code>), if it wants to use the module.</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2 id="add-a-static-library-project-to-the-solution">Add a Static
+Library Project to the Solution</h2>
+<ol start="30" type="1">
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Add -&gt; New Project</code></p>
+<p><img src="images/vs/add_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>Static Library</code> and click
+<code>Next</code></p>
+<p><img src="images/vs/project_type_staticlibrary.png" width="500" /></p></li>
+<li><p>Name the project <code>cstatic</code> and click
+<code>Create</code></p>
+<p><img src="images/vs/project_name_cstatic.png" width="500" /></p></li>
+<li><p>Select the files <code>framework.h</code>, <code>pch.h</code>,
+<code>cstatic.cpp</code>, and <code>pch.cpp</code>, then right-click the
+selection and choose <code>Remove</code> to delete them.</p>
+<p><img src="images/vs/delete_files_static.png" width="300" style="padding-left:200px" /></p></li>
+<li><p>Add the file <code>simplemath2.h</code> with the contents
+below.</p>
+<ul>
+<li><strong>Note!</strong> Do not copy-and-paste the
+<code>simplemath.h</code> file from the <code>capp</code> project via
+Solution Explorer, since it will only copy a reference to the file (use
+Windows File Explorer for that).</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma once</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse2<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath2_h.png" width="500" /></p></li>
+<li><p>Add the file <code>simplemath2.c</code> with the contents
+below.</p>
+<ul>
+<li><strong>Note!</strong> Do not copy-and-paste the
+<code>simplemath.c</code> file from the <code>capp</code> project via
+Solution Explorer, since it will only copy a reference to the file (use
+Windows File Explorer for that).</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath2.h&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse2<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sqrt<span class="op">(</span>a <span class="op">*</span> a <span class="op">+</span> b <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath2_c.png" width="500" /></p></li>
+<li><p>Right-click the <code>cstatic</code> project node in Solution
+Explorer and choose <code>Properties</code></p>
+<ul>
+<li>Under <code>Configuration Properties -&gt; General</code> notice:
+<ul>
+<li><strong>Output Directory</strong> has the same setting as the
+<code>capp</code> project</li>
+<li><strong>Configuration Type</strong> is
+<code>Static Library (.lib)</code></li>
+</ul></li>
+</ul>
+<p><img src="images/vs/cstatic_config_general.png" width="500" /></p>
+<ul>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; Precompiled Headers</code>
+set:
+<ul>
+<li><strong>Precompiled Header</strong> to
+<code>Not Using Precompiled Headers</code></li>
+</ul></li>
+</ul>
+<p><img src="images/vs/cstatic_config_ccpp_pch.png" width="500" /></p></li>
+<li><p>Click the <code>Apply</code> button and then the <code>OK</code>
+button to close the project properties.</p></li>
+<li><p>Build the solution with <code>Ctrl + Shift + B</code>.</p></li>
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Open Folder in File Explorer</code> which will open the solution
+folder <code>ctutorial</code>, then:</p>
+<ul>
+<li>Navigate to the subfolder <code>ctutorial\cstatic</code> and notice
+it contains the file <code>simplemath2.h</code> (and the file
+<code>simplemath2.c</code>).
+<img src="images/vs/file_explorer_cstatic.png" width="500" /></li>
+<li>Navigate to the subfolder <code>ctutorial\x64\Debug</code> and
+notice it contains the compiled static library file
+<code>cstatic.lib</code> (and the file <code>capp.exe</code>).
+<img src="images/vs/file_explorer_x64_debug.png" width="500" /></li>
+</ul></li>
+</ol>
+<h2 id="use-the-static-library-from-the-capp-project">Use the Static
+Library from the <code>capp</code> Project</h2>
+<ol start="40" type="1">
+<li><p>The <code>capp</code> program needs to know where the files
+<code>simplemath2.h</code> and <code>cstatic.lib</code> are, so
+right-click the <code>capp</code> project node in Solution Explorer and
+choose <code>Properties</code>.</p>
+<ul>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; General</code>:
+<ul>
+<li>To the right of <strong>Additional Include Directories</strong>,
+click the drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/capp_config_ccpp_general2.png" width="500" /></li>
+<li>Click the <em>folder</em> icon in the pop-up window.</li>
+<li>Then, add the path to the folder containing
+<code>simplemath2.h</code></li>
+<li>Finally, click the <code>OK</code> button to close the pop-up
+window.
+<img src="images/vs/capp_config_ccpp_general2_add.png" width="250" /></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; General</code>:
+<ul>
+<li>To the right of <strong>Additional Library Directories</strong>,
+click the drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/capp_config_linker_general2.png" width="500" /></li>
+<li>Click the <em>folder</em> icon in the pop-up window.</li>
+<li>Then, add the path to the folder containing
+<code>cstatic.lib</code></li>
+<li>Finally, click the <code>OK</code> button to close the pop-up
+window.
+<img src="images/vs/capp_config_linker_general2_add.png" width="250" /></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; Input</code>:
+<ul>
+<li>To the right of <strong>Additional Dependencies</strong>, click the
+drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/capp_config_linker_input2.png" width="500" /></li>
+<li>In the pop-up window, enter the name of the static library
+<code>cstatic.lib</code>.</li>
+<li>Click the <code>OK</code> button to close the pop-up window.
+<img src="images/vs/capp_config_linker_input2_add.png" width="250" /></li>
+</ul></li>
+<li>Finally, click the <code>Apply</code> button and then the
+<code>OK</code> button to close the project properties.</li>
+</ul></li>
+<li><p>Open the file <code>main.c</code> and replace its contents with
+the code below.</p>
+<ul>
+<li>We have only added one <code>#include</code> and one
+<code>printf()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath.h&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath2.h&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span><span class="op">*</span> argv<span class="op">[])</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out command line arguments</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Number of command line arguments: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> argc<span class="op">);</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> argc<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;Command line argument </span><span class="sc">%d</span><span class="st">: </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> i<span class="op">,</span> argv<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out the hypotenuse of the sides in a right triangle</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> a <span class="op">=</span> <span class="fl">3.0</span><span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> b <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse2(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse2<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Return 0 (program executed successfully) to operating system</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_main_c2.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text <code>hypotenuse2(3.00, 4.00) = 5.00</code> written
+to the terminal window.</li>
+<li>Then <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/project_debug_capp_cstatic.png" width="500" /></p></li>
+</ol>
+<h2 id="add-a-dynamic-library-project-to-the-solution">Add a Dynamic
+Library Project to the Solution</h2>
+<ol start="43" type="1">
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Add -&gt; New Project</code></p>
+<p><img src="images/vs/add_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>Dynamic-Link Library (DLL)</code> and
+click <code>Next</code></p>
+<p><img src="images/vs/project_type_dynamiclibrary.png" width="500" /></p></li>
+<li><p>Name the project <code>cdynamic</code> and click
+<code>Create</code></p>
+<p><img src="images/vs/project_name_cdynamic.png" width="500" /></p></li>
+<li><p>Select the files <code>framework.h</code>, <code>pch.h</code>,
+<code>dllmain.cpp</code>, and <code>pch.cpp</code>, then right-click the
+selection and choose <code>Remove</code> to delete them.</p>
+<p><img src="images/vs/delete_files_dynamic.png" width="300" style="padding-left:200px" /></p></li>
+<li><p>Add the file <code>simplemath3.h</code> with the contents
+below.</p>
+<ul>
+<li><strong>Note!</strong> Do not copy-and-paste the
+<code>simplemath.h</code> file from the <code>capp</code> project via
+Solution Explorer, since it will only copy a reference to the file (use
+Windows File Explorer for that).</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp"># pragma once</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef MYDLL_EXPORTS</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MYDLL_API __declspec</span><span class="op">(</span><span class="pp">dllexport</span><span class="op">)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MYDLL_API __declspec</span><span class="op">(</span><span class="pp">dllimport</span><span class="op">)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>MYDLL_API <span class="dt">double</span> hypotenuse3<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath3_h.png" width="500" /></p></li>
+<li><p>Add the file <code>simplemath3.c</code> with the contents
+below.</p>
+<ul>
+<li><strong>Note!</strong> Do not copy-and-paste the
+<code>simplemath.c</code> file from the <code>capp</code> project via
+Solution Explorer, since it will only copy a reference to the file (use
+Windows File Explorer for that).</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath3.h&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> hypotenuse3<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sqrt<span class="op">(</span>a <span class="op">*</span> a <span class="op">+</span> b <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_simplemath3_c.png" width="500" /></p></li>
+<li><p>Right-click the <code>cdynamic</code> project node in Solution
+Explorer and choose <code>Properties</code></p>
+<ul>
+<li>Under <code>Configuration Properties -&gt; General</code> notice:
+<ul>
+<li><strong>Output Directory</strong> has the same setting as the
+<code>capp</code> project</li>
+<li><strong>Configuration Type</strong> is
+<code>Dynamic Library (.dll)</code></li>
+</ul></li>
+</ul>
+<p><img src="images/vs/cdynamic_config_general.png" width="500" /></p>
+<ul>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; Preprocessor</code>:
+<ul>
+<li>To the right of <strong>Preprocessor Definitions</strong>, click the
+drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/cdynamic_config_ccpp_preprocessor.png" width="500" /></li>
+<li>In the pop-up window, add the entry <code>MYDLL_EXPORTS</code>.</li>
+<li>Finally, click the <code>OK</code> button to close the pop-up
+window.
+<img src="images/vs/cdynamic_config_ccpp_preprocessor_add.png" width="250" /></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; Precompiled Headers</code>
+set:
+<ul>
+<li><strong>Precompiled Header</strong> to
+<code>Not Using Precompiled Headers</code>
+<img src="images/vs/cdynamic_config_ccpp_pch_off.png" width="500" /></li>
+</ul></li>
+<li>Click the <code>Apply</code> button and then the <code>OK</code>
+button to close the project properties.</li>
+</ul></li>
+<li><p>Build the solution with <code>Ctrl + Shift + B</code>.</p></li>
+<li><p>Right-click the solution node in Solution Explorer and choose
+<code>Open Folder in File Explorer</code> which will open the solution
+folder <code>ctutorial</code>, then:</p>
+<ul>
+<li>Navigate to the subfolder <code>ctutorial\cdynamic</code> and notice
+it contains the file <code>simplemath3.h</code> (and the file
+<code>simplemath3.c</code>).
+<img src="images/vs/file_explorer_cdynamic.png" width="500" /></li>
+<li>Navigate to the subfolder <code>ctutorial\x64\Debug</code> and
+notice it contains the compiled dynamic library file
+<code>cdynamic.dll</code> together with its import library
+<code>cdynamic.lib</code> (and the file <code>capp.exe</code>).
+<img src="images/vs/file_explorer_x64_debug3.png" width="500" /></li>
+</ul></li>
+</ol>
+<h2 id="use-the-dynamic-library-from-the-capp-project">Use the Dynamic
+Library from the <code>capp</code> Project</h2>
+<ol start="52" type="1">
+<li><p>The <code>capp</code> program needs to know where the files
+<code>simplemath3.h</code> and <code>cdynamic.lib</code> are
+(<code>cdynamic.dll</code> is in the same folder as
+<code>capp.exe</code> which is where it should be), so right-click the
+<code>capp</code> project node in Solution Explorer and choose
+<code>Properties</code>.</p>
+<ul>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; General</code>:
+<ul>
+<li>To the right of <strong>Additional Include Directories</strong>,
+click the drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/capp_config_ccpp_general2.png" width="500" /></li>
+<li>Click the <em>folder</em> icon in the pop-up window.</li>
+<li>Then, add the path to the folder containing
+<code>simplemath3.h</code></li>
+<li>Finally, click the <code>OK</code> button to close the pop-up
+window.
+<img src="images/vs/capp_config_ccpp_general3_add.png" width="250" /></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; General</code>:
+<ul>
+<li>Notice <strong>Additional Library Directories</strong> already has
+an entry to the correct directory (we added this when we used the static
+library).
+<img src="images/vs/capp_config_linker_general2.png" width="500" /></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; Input</code>:
+<ul>
+<li>To the right of <strong>Additional Dependencies</strong>, click the
+drop-down combobox.</li>
+<li>Then click <code>&lt;Edit...&gt;</code>.
+<img src="images/vs/capp_config_linker_input2.png" width="500" /></li>
+<li>In the pop-up window, enter the name of the import library
+<code>cdynamic.lib</code>.</li>
+<li>Click the <code>OK</code> button to close the pop-up window.
+<img src="images/vs/capp_config_linker_input3_add.png" width="250" /></li>
+</ul></li>
+<li>Finally, click the <code>Apply</code> button and then the
+<code>OK</code> button to close the project properties.</li>
+</ul></li>
+<li><p>Open the file <code>main.c</code> and replace its contents with
+the code below.</p>
+<ul>
+<li>We have only added one <code>#include</code> and one
+<code>printf()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath.h&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath2.h&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;simplemath3.h&quot;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span><span class="op">*</span> argv<span class="op">[])</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out command line arguments</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Number of command line arguments: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> argc<span class="op">);</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> argc<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;Command line argument </span><span class="sc">%d</span><span class="st">: </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> i<span class="op">,</span> argv<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">);</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Print out the hypotenuse of the sides in a right triangle</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> a <span class="op">=</span> <span class="fl">3.0</span><span class="op">;</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> b <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse2(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse2<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;hypotenuse3(</span><span class="sc">%.2f</span><span class="st">, </span><span class="sc">%.2f</span><span class="st">) = </span><span class="sc">%.2f</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> hypotenuse3<span class="op">(</span>a<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Return 0 (program executed successfully) to operating system</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/file_main_c3.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text <code>hypotenuse3(3.00, 4.00) = 5.00</code> written
+to the terminal window.</li>
+<li>Then <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/project_debug_capp_cdynamic.png" width="500" /></p></li>
+</ol>
+<h2 id="vector-addition-in-c">Vector Addition in C</h2>
+<ol start="55" type="1">
+<li><p>From the main menu in Visual Studio, choose
+<code>File -&gt; New Project</code></p>
+<p><img src="images/vs/file_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>Console App C++</code> and click
+<code>Next</code></p>
+<p><img src="images/vs/project_type_consoleapp.png" width="500" /></p></li>
+<li><p>Name the project <code>cvec</code> and click
+<code>Create</code></p></li>
+</ol>
+<p><img src="images/vs/project_name_cvec.png" width="500" /></p>
+<ol start="58" type="1">
+<li>Right-click the file <code>cvec.cpp</code> in Solution Explorer and
+choose <code>Remove</code></li>
+</ol>
+<p><img src="images/vs/file_cvec_remove.png" width="300" style="padding-left:200px" /></p>
+<ol start="59" type="1">
+<li>Right-click the <code>Source Files</code> folder and choose
+<code>Add -&gt; New Item</code></li>
+</ol>
+<p><img src="images/vs/add_new_cvec_main.png" width="500" /></p>
+<ol start="60" type="1">
+<li><p>Choose file type <code>C++ File (cpp)</code> , name it
+<code>main.c</code>, and click <code>Add</code></p>
+<ul>
+<li><strong>Note!</strong> Visual Studio knows this is a <strong>C
+source file</strong> due to the <code>.c</code> file extension</li>
+<li>If we had kept the <code>.cpp</code> file extension, it would be
+treated as a C++ file.</li>
+<li>Don’t forget to change this from <code>.cpp</code> to
+<code>.c</code> for a C file!</li>
+</ul>
+<p><img src="images/vs/file_cvec_main.png" width="500" /></p></li>
+<li><p>Add the code below to <code>main.c</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define N </span><span class="dv">1024</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> vec_add<span class="op">(</span><span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> A<span class="op">,</span> <span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> B<span class="op">,</span> <span class="dt">float</span><span class="op">*</span> C<span class="op">)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> id <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> id <span class="op">&lt;</span> N<span class="op">;</span> <span class="op">++</span>id<span class="op">)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        C<span class="op">[</span>id<span class="op">]</span> <span class="op">=</span> A<span class="op">[</span>id<span class="op">]</span> <span class="op">+</span> B<span class="op">[</span>id<span class="op">];</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> <span class="op">*</span>h_A<span class="op">,</span> <span class="op">*</span>h_B<span class="op">,</span> <span class="op">*</span>h_C<span class="op">;</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> size <span class="op">=</span> N <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">);</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Allocate host memory</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    h_A <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    h_B <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    h_C <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Initialize host arrays</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        h_A<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i<span class="op">;</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        h_B<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        h_C<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span><span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Launch calculation</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    vec_add<span class="op">(</span>h_A<span class="op">,</span> h_B<span class="op">,</span> h_C<span class="op">);</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Display results</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%f</span><span class="st"> + </span><span class="sc">%f</span><span class="st"> = </span><span class="sc">%f\n</span><span class="st">&quot;</span><span class="op">,</span> h_A<span class="op">[</span>i<span class="op">],</span> h_B<span class="op">[</span>i<span class="op">],</span> h_C<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Cleanup</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>h_A<span class="op">);</span> free<span class="op">(</span>h_B<span class="op">);</span> free<span class="op">(</span>h_C<span class="op">);</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/cvec_main.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text written to the terminal window.
+<ul>
+<li>It shows the first 10 vector additions (of 1024 in total).</li>
+</ul></li>
+<li>Then <code>Press any key to close this window . . .</code></li>
+</ul>
+<p><img src="images/vs/cvec_output.png" width="500" /></p></li>
+</ol>
+<h2 id="vector-addition-in-opencl">Vector Addition in OpenCL</h2>
+<ol start="63" type="1">
+<li><p>From the main menu in Visual Studio, choose
+<code>File -&gt; New Project</code></p>
+<p><img src="images/vs/file_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>Console App C++</code> and click
+<code>Next</code></p>
+<p><img src="images/vs/project_type_consoleapp.png" width="500" /></p></li>
+<li><p>Name the project <code>openclvec</code> and click
+<code>Create</code></p></li>
+</ol>
+<p><img src="images/vs/project_name_openclvec.png" width="500" /></p>
+<ol start="66" type="1">
+<li>Right-click the file <code>openclvec.cpp</code> in Solution Explorer
+and choose <code>Remove</code></li>
+</ol>
+<p><img src="images/vs/file_openclvec_remove.png" width="300" style="padding-left:200px" /></p>
+<ol start="67" type="1">
+<li>Right-click the <code>Source Files</code> folder and choose
+<code>Add -&gt; New Item</code></li>
+</ol>
+<p><img src="images/vs/add_new_openclvec_main.png" width="500" /></p>
+<ol start="68" type="1">
+<li><p>Choose file type <code>C++ File (cpp)</code> , name it
+<code>main.c</code>, and click <code>Add</code></p>
+<ul>
+<li><strong>Note!</strong> Visual Studio knows this is a <strong>C
+source file</strong> due to the <code>.c</code> file extension</li>
+<li>If we had kept the <code>.cpp</code> file extension, it would be
+treated as a C++ file.</li>
+<li>Don’t forget to change this from <code>.cpp</code> to
+<code>.c</code> for a C file!</li>
+</ul>
+<p><img src="images/vs/file_openclvec_main.png" width="500" /></p></li>
+<li><p>Add the code below to <code>main.c</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;CL/cl.h&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define N </span><span class="dv">1024</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CL_TARGET_OPENCL_VERSION </span><span class="dv">300</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define KERNEL_FILE </span><span class="st">&quot;kernel.cl&quot;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span><span class="op">*</span> read_kernel_source<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> filename<span class="op">)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span><span class="op">*</span> fp <span class="op">=</span> fopen<span class="op">(</span>filename<span class="op">,</span> <span class="st">&quot;r&quot;</span><span class="op">);</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>fp<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        fprintf<span class="op">(</span>stderr<span class="op">,</span> <span class="st">&quot;Failed to open kernel file: </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> filename<span class="op">);</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    fseek<span class="op">(</span>fp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> SEEK_END<span class="op">);</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> size <span class="op">=</span> ftell<span class="op">(</span>fp<span class="op">);</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    rewind<span class="op">(</span>fp<span class="op">);</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span><span class="op">*</span> src <span class="op">=</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>malloc<span class="op">(</span>size <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    fread<span class="op">(</span>src<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> size<span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    src<span class="op">[</span>size<span class="op">]</span> <span class="op">=</span> <span class="ch">&#39;</span><span class="sc">\0</span><span class="ch">&#39;</span><span class="op">;</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>fp<span class="op">);</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> src<span class="op">;</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> A<span class="op">[</span>N<span class="op">],</span> B<span class="op">[</span>N<span class="op">],</span> C<span class="op">[</span>N<span class="op">];</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        A<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i<span class="op">;</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        B<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">// OpenCL setup</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    cl_platform_id platform<span class="op">;</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    cl_device_id device<span class="op">;</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    cl_context context<span class="op">;</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    cl_command_queue queue<span class="op">;</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    cl_program program<span class="op">;</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    cl_kernel kernel<span class="op">;</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    cl_mem bufA<span class="op">,</span> bufB<span class="op">,</span> bufC<span class="op">;</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    cl_int err<span class="op">;</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    err <span class="op">=</span> clGetPlatformIDs<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>platform<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    err <span class="op">|=</span> clGetDeviceIDs<span class="op">(</span>platform<span class="op">,</span> CL_DEVICE_TYPE_DEFAULT<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>device<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>    context <span class="op">=</span> clCreateContext<span class="op">(</span>NULL<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>device<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>err<span class="op">);</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    queue <span class="op">=</span> clCreateCommandQueueWithProperties<span class="op">(</span>context<span class="op">,</span> device<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="op">&amp;</span>err<span class="op">);</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Read kernel source</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span><span class="op">*</span> source <span class="op">=</span> read_kernel_source<span class="op">(</span>KERNEL_FILE<span class="op">);</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create program and build</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    program <span class="op">=</span> clCreateProgramWithSource<span class="op">(</span>context<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">**)&amp;</span>source<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>err<span class="op">);</span></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    err <span class="op">=</span> clBuildProgram<span class="op">(</span>program<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>device<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>err <span class="op">!=</span> CL_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Show build log on error</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> log<span class="op">[</span><span class="dv">2048</span><span class="op">];</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>        clGetProgramBuildInfo<span class="op">(</span>program<span class="op">,</span> device<span class="op">,</span> CL_PROGRAM_BUILD_LOG<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>log<span class="op">),</span> log<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;Build error:</span><span class="sc">\n%s\n</span><span class="st">&quot;</span><span class="op">,</span> log<span class="op">);</span></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>    kernel <span class="op">=</span> clCreateKernel<span class="op">(</span>program<span class="op">,</span> <span class="st">&quot;vec_add&quot;</span><span class="op">,</span> <span class="op">&amp;</span>err<span class="op">);</span></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Buffers</span></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>    bufA <span class="op">=</span> clCreateBuffer<span class="op">(</span>context<span class="op">,</span> CL_MEM_READ_ONLY<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>    bufB <span class="op">=</span> clCreateBuffer<span class="op">(</span>context<span class="op">,</span> CL_MEM_READ_ONLY<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>    bufC <span class="op">=</span> clCreateBuffer<span class="op">(</span>context<span class="op">,</span> CL_MEM_WRITE_ONLY<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>    clEnqueueWriteBuffer<span class="op">(</span>queue<span class="op">,</span> bufA<span class="op">,</span> CL_TRUE<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> A<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>    clEnqueueWriteBuffer<span class="op">(</span>queue<span class="op">,</span> bufB<span class="op">,</span> CL_TRUE<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> B<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>    clSetKernelArg<span class="op">(</span>kernel<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>cl_mem<span class="op">),</span> <span class="op">&amp;</span>bufA<span class="op">);</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>    clSetKernelArg<span class="op">(</span>kernel<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>cl_mem<span class="op">),</span> <span class="op">&amp;</span>bufB<span class="op">);</span></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>    clSetKernelArg<span class="op">(</span>kernel<span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>cl_mem<span class="op">),</span> <span class="op">&amp;</span>bufC<span class="op">);</span></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> global_size <span class="op">=</span> N<span class="op">;</span></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>    clEnqueueNDRangeKernel<span class="op">(</span>queue<span class="op">,</span> kernel<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>global_size<span class="op">,</span> NULL<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>    clEnqueueReadBuffer<span class="op">(</span>queue<span class="op">,</span> bufC<span class="op">,</span> CL_TRUE<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span> <span class="op">*</span> N<span class="op">,</span> C<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%f</span><span class="st"> + </span><span class="sc">%f</span><span class="st"> = </span><span class="sc">%f\n</span><span class="st">&quot;</span><span class="op">,</span> A<span class="op">[</span>i<span class="op">],</span> B<span class="op">[</span>i<span class="op">],</span> C<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>source<span class="op">);</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a>    clReleaseMemObject<span class="op">(</span>bufA<span class="op">);</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>    clReleaseMemObject<span class="op">(</span>bufB<span class="op">);</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a>    clReleaseMemObject<span class="op">(</span>bufC<span class="op">);</span></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a>    clReleaseProgram<span class="op">(</span>program<span class="op">);</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a>    clReleaseKernel<span class="op">(</span>kernel<span class="op">);</span></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>    clReleaseCommandQueue<span class="op">(</span>queue<span class="op">);</span></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>    clReleaseContext<span class="op">(</span>context<span class="op">);</span></span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/openclvec_main.png" width="500" /></p></li>
+<li><p>Right-click the <code>Source Files</code> folder and choose
+<code>Add -&gt; New Item</code></p></li>
+</ol>
+<p><img src="images/vs/add_new_openclvec_main.png" width="500" /></p>
+<ol start="71" type="1">
+<li><p>Choose file type <code>C++ File (cpp)</code> , name it
+<code>kernel.cl</code>, and click <code>Add</code></p>
+<ul>
+<li><strong>Note!</strong> Make sure the file extension is
+<code>.cl</code>.</li>
+</ul>
+<p><img src="images/vs/file_openclvec_kernel.png" width="500" /></p></li>
+<li><p>Add the code below to <code>kernel.cl</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>__kernel <span class="dt">void</span> vec_add<span class="op">(</span>__global <span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> A<span class="op">,</span> __global <span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> B<span class="op">,</span> __global <span class="dt">float</span><span class="op">*</span> C<span class="op">)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> id <span class="op">=</span> get_global_id<span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    C<span class="op">[</span>id<span class="op">]</span> <span class="op">=</span> A<span class="op">[</span>id<span class="op">]</span> <span class="op">+</span> B<span class="op">[</span>id<span class="op">];</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/openclvec_kernel.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text written to the terminal window.
+<ul>
+<li>It shows the first 10 vector additions (of 1024 in total).</li>
+</ul></li>
+<li>Then <code>Press any key to close this window . . .</code>
+<img src="images/vs/openclvec_output.png" width="500" /></li>
+</ul></li>
+<li><p>In the previous step, if you get a compilation error
+<code>is not valid UTF-8</code>:</p>
+<ul>
+<li>Open the file <code>kernel.cl</code> in <strong>Visual Studio Code
+(VSCode)</strong>.</li>
+<li>In the lower right of VSCode, click <code>CRLF</code>.</li>
+<li>In the Command Palette (top of VSCode), choose <code>LF</code>.</li>
+<li>Save the file with <code>Ctrl + S</code>.</li>
+<li>Now compile and run the Visual Studio Project again.
+<img src="images/vs/vscode_lf.png" width="500" /></li>
+</ul></li>
+<li><p>If you get preprocessor or linker errors:</p>
+<ul>
+<li>You probably didn’t integrate VCVPK with Visual Studio during your
+environment setup.</li>
+<li>Right-click the project node in Solution Explorer and choose
+<code>Properties</code>.</li>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; General</code>:
+<ul>
+<li><strong>Additional Include Directories</strong>: Add path to OpenCL
+include directory which might be akin to:
+<ul>
+<li><code>%LOCALAPPDATA%\Programs\vcpkg\installed\x64-windows\include</code></li>
+<li><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include</code></li>
+</ul></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; General</code>:
+<ul>
+<li><strong>Additional Library Directories</strong>: Add path to OpenCL
+library directory which might be akin to:
+<ul>
+<li><code>%LOCALAPPDATA%\Programs\vcpkg\installed\x64-windows\lib</code></li>
+<li><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\lib\x64</code></li>
+</ul></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; Input</code>:
+<ul>
+<li><strong>Additional Dependencies</strong>: Add
+<code>OpenCL.lib</code></li>
+</ul></li>
+<li>Now compile and run the Visual Studio Project again.</li>
+</ul></li>
+</ol>
+<h2 id="vector-addition-in-cuda">Vector Addition in CUDA</h2>
+<ol start="76" type="1">
+<li><p>From the main menu in Visual Studio, choose
+<code>File -&gt; New Project</code></p>
+<p><img src="images/vs/file_new_project.png" width="500" /></p></li>
+<li><p>Choose project type <code>CUDA xx.x Runtime</code> and click
+<code>Next</code></p>
+<ul>
+<li>Replace <code>xx.x</code> with your installed version of the CUDA
+Toolkit.</li>
+</ul>
+<p><img src="images/vs/project_type_cuda.png" width="500" /></p></li>
+<li><p>Name the project <code>cudavec</code> and click
+<code>Create</code></p></li>
+</ol>
+<p><img src="images/vs/project_name_cudavec.png" width="500" /></p>
+<ol start="79" type="1">
+<li><p>Replace the contents in the file <code>kernel.cu</code> with the
+code below:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;cuda_runtime.h&quot;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;device_launch_parameters.h&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define N </span><span class="dv">1024</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>__global__ <span class="dt">void</span> vec_add<span class="op">(</span><span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> A<span class="op">,</span> <span class="dt">const</span> <span class="dt">float</span><span class="op">*</span> B<span class="op">,</span> <span class="dt">float</span><span class="op">*</span> C<span class="op">)</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> id <span class="op">=</span> threadIdx<span class="op">.</span>x <span class="op">+</span> blockDim<span class="op">.</span>x <span class="op">*</span> blockIdx<span class="op">.</span>x<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>id <span class="op">&lt;</span> N<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        C<span class="op">[</span>id<span class="op">]</span> <span class="op">=</span> A<span class="op">[</span>id<span class="op">]</span> <span class="op">+</span> B<span class="op">[</span>id<span class="op">];</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span><span class="op">*</span> h_A<span class="op">,</span> <span class="op">*</span> h_B<span class="op">,</span> <span class="op">*</span> h_C<span class="op">;</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span><span class="op">*</span> d_A<span class="op">,</span> <span class="op">*</span> d_B<span class="op">,</span> <span class="op">*</span> d_C<span class="op">;</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> size <span class="op">=</span> N <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">);</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Allocate host memory</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    h_A <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    h_B <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    h_C <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">*)</span>malloc<span class="op">(</span>size<span class="op">);</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Initialize host arrays</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>        h_A<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i<span class="op">;</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>        h_B<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span>i <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Allocate device memory</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    cudaMalloc<span class="op">((</span><span class="dt">void</span><span class="op">**)&amp;</span>d_A<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    cudaMalloc<span class="op">((</span><span class="dt">void</span><span class="op">**)&amp;</span>d_B<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    cudaMalloc<span class="op">((</span><span class="dt">void</span><span class="op">**)&amp;</span>d_C<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Copy data to device</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    cudaMemcpy<span class="op">(</span>d_A<span class="op">,</span> h_A<span class="op">,</span> size<span class="op">,</span> cudaMemcpyHostToDevice<span class="op">);</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    cudaMemcpy<span class="op">(</span>d_B<span class="op">,</span> h_B<span class="op">,</span> size<span class="op">,</span> cudaMemcpyHostToDevice<span class="op">);</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Launch kernel</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> threadsPerBlock <span class="op">=</span> <span class="dv">256</span><span class="op">;</span></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> blocksPerGrid <span class="op">=</span> <span class="op">(</span>N <span class="op">+</span> threadsPerBlock <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> threadsPerBlock<span class="op">;</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>    vec_add<span class="op">&lt;&lt;&lt;</span>blocksPerGrid<span class="op">,</span> threadsPerBlock<span class="op">&gt;&gt;&gt;(</span>d_A<span class="op">,</span> d_B<span class="op">,</span> d_C<span class="op">);</span></span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Copy result back to host</span></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>    cudaMemcpy<span class="op">(</span>h_C<span class="op">,</span> d_C<span class="op">,</span> size<span class="op">,</span> cudaMemcpyDeviceToHost<span class="op">);</span></span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Display results</span></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%f</span><span class="st"> + </span><span class="sc">%f</span><span class="st"> = </span><span class="sc">%f\n</span><span class="st">&quot;</span><span class="op">,</span> h_A<span class="op">[</span>i<span class="op">],</span> h_B<span class="op">[</span>i<span class="op">],</span> h_C<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Cleanup</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>h_A<span class="op">);</span> free<span class="op">(</span>h_B<span class="op">);</span> free<span class="op">(</span>h_C<span class="op">);</span></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>    cudaFree<span class="op">(</span>d_A<span class="op">);</span> cudaFree<span class="op">(</span>d_B<span class="op">);</span> cudaFree<span class="op">(</span>d_C<span class="op">);</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><img src="images/vs/cudavec_main.png" width="500" /></p></li>
+<li><p>Compile (build) and run (debug) the program with
+<code>F5</code>.</p>
+<ul>
+<li>Notice the text written to the terminal window.
+<ul>
+<li>It shows the first 10 vector additions (of 1024 in total).</li>
+</ul></li>
+<li>Then <code>Press any key to close this window . . .</code>
+<img src="images/vs/cudavec_output.png" width="500" /></li>
+</ul></li>
+<li><p>In the previous step, if you get preprocessor or linker
+errors:</p>
+<ul>
+<li>You’re CUDA Toolkit installation was probably not successful.</li>
+<li>Right-click the project node in Solution Explorer and choose
+<code>Properties</code>.</li>
+<li>Under
+<code>Configuration Properties -&gt; C/C++ -&gt; General</code>:
+<ul>
+<li><strong>Additional Include Directories</strong>: Add path to CUDA
+include directory which might be akin to:
+<ul>
+<li><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include</code></li>
+</ul></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; General</code>:
+<ul>
+<li><strong>Additional Library Directories</strong>: Add path to CUDA
+library directory which might be akin to:
+<ul>
+<li><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\lib\x64</code></li>
+</ul></li>
+</ul></li>
+<li>Under
+<code>Configuration Properties -&gt; Linker -&gt; Input</code>:
+<ul>
+<li><strong>Additional Dependencies</strong>: Add
+<code>cudart.lib</code> or <code>cudart_static.lib</code></li>
+</ul></li>
+<li>Now compile and run the Visual Studio Project again.</li>
+</ul></li>
+</ol>
+</body>
+</html>

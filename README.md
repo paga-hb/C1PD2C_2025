@@ -1,12 +1,13 @@
 # Parallell och distribuerad programmering (C1PD2C) HT 2025
 
-Denna reository är för kursen i Parallell och distribuerad programmering (HT 2025) på Högskolan i Borås.
+Denna repository är för kursen i Parallell och distribuerad programmering (HT 2025) på Högskolan i Borås.
 
 Kursens schema finns på [Kronox](https://schema.hb.se/setup/jsp/Schema.jsp?startDatum=2025-09-01&intervallTyp=a&intervallAntal=1&sprak=SV&sokMedAND=true&forklaringar=true&resurser=k.C1PD2C-20252-I25H5-) och kursmaterialet finns på [Canvas](https://hb.instructure.com/courses/10012).
 
 ## Utvecklingsmiljö
 
-Först, se till att du har installerat Visual Studio Code, .NET Sdk, Git, och Miniconda på din egen dator (laptop).
+Först, se till att du har installerat Visual Studio Code, .NET Sdk, Git, och Miniconda på din egen dator (laptop), enligt nedan.
+- OBS! Du kan också installera [Utvecklingsmiljön för Windows](https://paga-hb.github.io/C1PD2C_2025/win.html) samt [Visual Studio](https://paga-hb.github.io/C1PD2C_2025/vs.html).
 
 ### Mjukvara
 

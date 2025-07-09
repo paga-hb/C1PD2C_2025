@@ -33,10 +33,13 @@ Om du inte ser utskriften av en version för ett specifikt verktyg, se till att 
 
 Installera sedan nödvändiga Visual Studio Code extensioner genom att exekvera nedanstående kommandon i din terminal:
 
+- `code --install-extension ms-vscode.cpptools-extension-pack --force`
+- `code --install-extension vadimcn.vscode-lldb --force`
+- `code --install-extension ms-vscode.makefile-tools --force`
+- `code --install-extension NVIDIA.nsight-vscode-edition --force`
 - `code --install-extension ms-dotnettools.csdevkit`
 - `code --install-extension ms-dotnettools.vscodeintellicode-csharp`
 - `code --install-extension ms-toolsai.jupyter`
-- `code --install-extension yzhang.markdown-all-in-one`
 - `code --install-extension ms-python.python`
 
 ## Kursens GitHub Repository
@@ -49,12 +52,19 @@ När du har installerat ovanstående mjukvara, öppna en terminal och klonda Git
 - `conda activate ./.conda`
 - `python -m pip install --upgrade pip`
 - `pip install ipykernel jupyter`
+- `mamba install -y xeus-cling -c conda-forge`
+- `pip install nvcc4jupyter`
 
 ## Öppna Notebooken
 
-Slutligen, se till att du är i `pdp` foldern i din terminal, och öppna notebooken i Visual Studio Code (VSCode), genom att exekvera nedanstående kommando:
+Slutligen, se till att du är i `pdp` foldern i din terminal, och öppna önskad notebook nedan i Visual Studio Code (VSCode), genom att exekvera en av nedanstående kommandon:
 
-- `code -g notebooks/environment.ipynb:0 .`
+Workshop 0
+- `code -g notebooks/c.ipynb:0 .`
+
+Workshop 2
+- `code -g notebooks/cuda.ipynb:0 .`
+- `code -g notebooks/opencl.ipynb:0 .`
 
 När notebooken öppnar i VSCode, klicka på texten `Select Kernel` (i övre-högra delen av notebooken), och välj `Python Environments... => conda (Python 3.12) .conda/bin/python`.
 

@@ -7,7 +7,11 @@ Kursens schema finns på [Kronox](https://schema.hb.se/setup/jsp/Schema.jsp?star
 ## Utvecklingsmiljö
 
 Först, se till att du har installerat Visual Studio Code, .NET Sdk, Git, och Miniconda på din egen dator (laptop), enligt nedan.
-- OBS! Du kan också installera [Utvecklingsmiljön för Windows](https://paga-hb.github.io/C1PD2C_2025/win.html) samt [Visual Studio](https://paga-hb.github.io/C1PD2C_2025/vs.html).
+- OBS! Du kan också följa instruktionerna här (som också beskriver hur du installerar en C kompilator, CUDA och OpenCL):
+  - [Utvecklingsmiljön för Windows](https://paga-hb.github.io/C1PD2C_2025/win.html)
+  - [Utvecklingsmiljön för Linux](https://paga-hb.github.io/C1PD2C_2025/linux.html)
+  - [Utvecklingsmiljön för MacOS](https://paga-hb.github.io/C1PD2C_2025/mac.html)
+  - [Visual Studio](https://paga-hb.github.io/C1PD2C_2025/vs.html)
 
 ### Mjukvara
 

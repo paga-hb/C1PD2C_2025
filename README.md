@@ -37,10 +37,11 @@ Installera sedan nödvändiga Visual Studio Code extensioner genom att exekvera 
 - `code --install-extension vadimcn.vscode-lldb --force`
 - `code --install-extension ms-vscode.makefile-tools --force`
 - `code --install-extension NVIDIA.nsight-vscode-edition --force`
-- `code --install-extension ms-dotnettools.csdevkit`
-- `code --install-extension ms-dotnettools.vscodeintellicode-csharp`
-- `code --install-extension ms-toolsai.jupyter`
-- `code --install-extension ms-python.python`
+- `code --install-extension ms-dotnettools.csdevkit --force`
+- `code --install-extension ms-dotnettools.vscodeintellicode-csharp --force`
+- `code --install-extension ms-vscode-remote.remote-ssh --force`
+- `code --install-extension ms-toolsai.jupyter --force`
+- `code --install-extension ms-python.python --force`
 
 ## Kursens GitHub Repository
 

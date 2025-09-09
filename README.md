@@ -33,6 +33,13 @@ Verifiera att mjukvaran installerades korrekt genom att öppna en terminal och e
 
 Om du inte ser utskriften av en version för ett specifikt verktyg, se till att du har lagt till sökvägen till verktyget till din [`PATH` miljövariabel](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7).
 
+### Installera Mamba via Miniconda
+
+Exekvera följande två kommandon i din terminal (första kommandot installerar mamba, andra kommandot skriver ut mamba versionen):
+
+- `conda install -y -n base -c conda-forge mamba`
+- `mamba --version`
+
 ### Visual Studio Code (VSCode) extensioner
 
 Installera sedan nödvändiga Visual Studio Code extensioner genom att exekvera nedanstående kommandon i din terminal:
